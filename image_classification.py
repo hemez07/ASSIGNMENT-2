@@ -57,3 +57,16 @@ plt.title(f"Sample Image - Class {y_train[random_idx]}")
 plt.axis("off")
 plt.show()
 
+
+
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
+
+# Train SVM classifier
+svm = SVC(kernel='linear')
+svm.fit(X_train_pca, y_train)
+
+# Predict and evaluate SVM
+y_pred_svm = svm.predict(X_test_pca)
+svm_accuracy = accuracy_score(y_test, y_pred_svm)
+print(f"SVM Accuracy with PCA: {svm_accuracy:.4f}")
