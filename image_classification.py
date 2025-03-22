@@ -70,3 +70,17 @@ svm.fit(X_train_pca, y_train)
 y_pred_svm = svm.predict(X_test_pca)
 svm_accuracy = accuracy_score(y_test, y_pred_svm)
 print(f"SVM Accuracy with PCA: {svm_accuracy:.4f}")
+
+
+
+from sklearn.linear_model import LogisticRegression
+
+# Train Softmax classifier (Logistic Regression)
+softmax = LogisticRegression(multi_class='multinomial', solver='lbfgs', max_iter=1000)
+softmax.fit(X_train_pca, y_train)
+
+# Predict and evaluate Softmax
+y_pred_softmax = softmax.predict(X_test_pca)
+softmax_accuracy = accuracy_score(y_test, y_pred_softmax)
+print(f"Softmax Accuracy with PCA: {softmax_accuracy:.4f}")
+
